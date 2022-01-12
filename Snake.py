@@ -5,10 +5,10 @@ import random
 WINDOW_SIZE = (600,600)
 PIXEL_SIZE = 10
 
-def collision(pos1, pos2):  #para saber que dois blocos estao na mesma posiçao, estando um egual ao outro
+def collision(pos1, pos2):
     return pos1 == pos2
 
-  #Pour savoir si le serpent est dans les limits de la fenêtre, 0=X, 1=Y
+  #Limites des bords
 def off_limits(pos):
     if 0 <=pos[0]< WINDOW_SIZE[0] and 0 <= pos[1] < WINDOW_SIZE[1]:
         return False
@@ -23,13 +23,13 @@ def random_on_grid():
 
   #Creation du programme
 pygame.init()
-screen = pygame.display.set_mode(WINDOW_SIZE)  #Taille de la fenêtre
+screen = pygame.display.set_mode(WINDOW_SIZE)
 pygame.display.set_caption('Snake')
 
   #Serpent
-snake_pos = [(250,50), (260,50), (270,50)]  #Corps du serpent, X,Y, 10 em 10
-snake_surface = pygame.Surface((PIXEL_SIZE, PIXEL_SIZE))  #Elemento que a gente vai mostrar, superficie que vamos mostrar na tela, quadrade branco
-snake_surface.fill((255, 255, 255))  #Couleur blanche
+snake_pos = [(250,50), (260,50), (270,50)]
+snake_surface = pygame.Surface((PIXEL_SIZE, PIXEL_SIZE))
+snake_surface.fill((255, 255, 255))
 snake_direction = K_LEFT
 
   #Pomme
