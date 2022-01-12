@@ -33,18 +33,18 @@ snake_surface.fill((255, 255, 255))
 snake_direction = K_LEFT
 
   #Pomme
-apple_surface = pygame.Surface((TAILLE_PIXEL, TAILLE_PIXEL)) #Taille
-apple_surface.fill((255, 0, 0))  #Couleur rouge
-apple_pos = random_on_grid()
+pomme_surface = pygame.Surface((TAILLE_PIXEL, TAILLE_PIXEL)) #Taille
+pomme_surface.fill((255, 0, 0))  #Couleur rouge
+pomme_pos = random_on_grid()
 
   #Quand on meurt, on revient à la case départ
 def restart_game():
     global snake_pos
-    global apple_pos
+    global pomme_pos
     global snake_direction
     snake_pos = [(250,50), (260,50), (270,50)]
     snake_direction = K_LEFT
-    apple_pos = random_on_grid()
+    pomme_pos = random_on_grid()
     
   #Pour que le programme ne se ferme pas
 while True:
@@ -58,11 +58,11 @@ while True:
             if event. key in [K_UP, K_DOWN, K_LEFT, K_RIGHT]:  #Pour que seul ces touches là fonctionnent, ex: l'espace ne marcherai pas
                 snake_direction = event.key
     
-    screen.blit(apple_surface, apple_pos)  #Para aparecer na tela, esta antes da cobra pra a cobra passar por cima da maça e nao o contrario
+    screen.blit(pomme_surface, pomme_pos)  #Para aparecer na tela, esta antes da cobra pra a cobra passar por cima da maça e nao o contrario
 
-    if collision(apple_pos, snake_pos[0]):  #en touchant la pomme, le serpent grandit
+    if collision(pomme_pos, snake_pos[0]):  #en touchant la pomme, le serpent grandit
         snake_pos.append((-10, -10))
-        apple_pos = random_on_grid()  #la pote, touchée, réapparait aléatoirement
+        pomme_pos = random_on_grid()  #la pote, touchée, réapparait aléatoirement
             
     for pos in snake_pos:
         screen.blit(snake_surface, pos)  #Blit é para desenhar na tela
