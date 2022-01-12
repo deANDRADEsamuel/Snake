@@ -2,38 +2,38 @@ import pygame
 from pygame.locals import *
 import random
 
-WINDOW_SIZE = (600,600)
-PIXEL_SIZE = 10
+TAILLE_FENETRE = (600,600)
+TAILLE_PIXEL = 10
 
 def collision(pos1, pos2):
     return pos1 == pos2
 
   #Limites des bords
 def off_limits(pos):
-    if 0 <=pos[0]< WINDOW_SIZE[0] and 0 <= pos[1] < WINDOW_SIZE[1]:
+    if 0 <=pos[0]< TAILLE_FENETRE[0] and 0 <= pos[1] < TAILLE_FENETRE[1]:
         return False
     else:
         return True
 
   #Position pomme
 def random_on_grid():
-    x = random.randint(0, WINDOW_SIZE[0])
-    y = random.randint(0, WINDOW_SIZE[1])
-    return x // PIXEL_SIZE * PIXEL_SIZE, y // PIXEL_SIZE * PIXEL_SIZE
+    x = random.randint(0, TAILLE_FENETRE[0])
+    y = random.randint(0, TAILLE_FENETRE[1])
+    return x // TAILLE_PIXEL* TAILLE_PIXEL, y // TAILLE_PIXEL * TAILLE_PIXEL
 
   #Creation du programme
 pygame.init()
-screen = pygame.display.set_mode(WINDOW_SIZE)
+screen = pygame.display.set_mode(TAILLE_FENETRE)
 pygame.display.set_caption('Snake')
 
   #Serpent
 snake_pos = [(250,50), (260,50), (270,50)]
-snake_surface = pygame.Surface((PIXEL_SIZE, PIXEL_SIZE))
+snake_surface = pygame.Surface((TAILLE_PIXEL, TAILLE_PIXEL))
 snake_surface.fill((255, 255, 255))
 snake_direction = K_LEFT
 
   #Pomme
-apple_surface = pygame.Surface((PIXEL_SIZE, PIXEL_SIZE)) #Taille
+apple_surface = pygame.Surface((TAILLE_PIXEL, TAILLE_PIXEL)) #Taille
 apple_surface.fill((255, 0, 0))  #Couleur rouge
 apple_pos = random_on_grid()
 
@@ -77,12 +77,12 @@ while True:
             
   #Mouvementation
     if snake_direction == K_UP:
-         snake_pos[0] = (snake_pos[0][0], snake_pos[0][1] - PIXEL_SIZE)
+         snake_pos[0] = (snake_pos[0][0], snake_pos[0][1] - TAILLE_PIXEL)
     elif snake_direction == K_DOWN:
-         snake_pos[0] = (snake_pos[0][0], snake_pos[0][1] + PIXEL_SIZE)
+         snake_pos[0] = (snake_pos[0][0], snake_pos[0][1] + TAILLE_PIXEL)
     elif snake_direction == K_LEFT:
-         snake_pos[0] = (snake_pos[0][0] - PIXEL_SIZE, snake_pos[0][1])
+         snake_pos[0] = (snake_pos[0][0] - TAILLE_PIXEL, snake_pos[0][1])
     elif snake_direction == K_RIGHT:
-         snake_pos[0] = (snake_pos[0][0] + PIXEL_SIZE, snake_pos[0][1])
+         snake_pos[0] = (snake_pos[0][0] + TAILLE_PIXEL, snake_pos[0][1])
         
     pygame.display.update()
